@@ -1,0 +1,65 @@
+" Function keys mapping
+map <F2> :NERDTreeToggle<cr>
+map <F3> :TlistToggle<cr>
+map <F4> :tabnew<cr>
+map <G> :Gstatus<cr>
+map <F5> :ZoomWin<cr>
+map <F8> :TagbarToggle<cr>
+
+" Disable arrow keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+syntax enable
+syntax on
+set background=dark
+let g:rehash256 = 1
+
+set pastetoggle=<F6>
+if has("gui_running")
+        set guioptions=egmrt
+endif
+set encoding=utf-8
+set list listchars=tab:→\ ,trail:·
+let g:ctrlp_custom_ignore = {
+\ 'dir':  '\v[\/](Resources|tmp|node_modules)$',
+\ 'file': '\v\.(exe|so|dll)$',
+\ 'link': 'some_bad_symbolic_links',
+\ }
+if executable('ag')
+    let g:ackprg = 'ag'
+endif
+
+" Powerline configuration
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '>'
+set t_Co=256
+
+" Folding configuration
+set foldmethod=syntax
+set foldlevelstart=7
+
+let javaScript_fold=1         " JavaScript
+let perl_fold=1               " Perl
+let php_folding=1             " PHP
+let r_syntax_folding=1        " R
+let ruby_fold=1               " Ruby
+let sh_fold_enabled=1         " sh
+let vimsyn_folding='af'       " Vim script
+let xml_syntax_folding=1      " XML
+
+" Others
+let $GOPATH = '/Users/cristianv/go/'
+set suffixesadd+=.js
+let g:gist_post_private = 1
+set completefunc=syntaxcomplete#Complete
+set number relativenumber
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
