@@ -1,12 +1,14 @@
+# export TERM="xterm-256color"
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/cvasquez/.oh-my-zsh
+export ZSH=/home/cvasquez/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # ZSH_THEME="robbyrussell"
-ZSH_THEME="agnoster"
+# ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="refined"
 source ~/tmuxinator.zsh
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
