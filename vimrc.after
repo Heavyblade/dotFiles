@@ -20,7 +20,7 @@ colorscheme OceanicNext
 
 set pastetoggle=<F6>
 if has("gui_running")
-        set guioptions=egmrt
+  set guioptions=egmrt
 endif
 set encoding=utf-8
 set list listchars=tab:→\ ,trail:·
@@ -68,13 +68,13 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
-" set js linter
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+let g:ale_linters = {
+\ 'javascript': ['eslint'],
+\ 'javascript.jsx': ['eslint'],
+\ 'jsx': ['eslint']
+\ }
+
+let g:ale_fixers = {
+\ 'javascript': ['eslint'],
+\ 'javascript.jsx': ['eslint'],
+\}
