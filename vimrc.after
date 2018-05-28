@@ -12,16 +12,13 @@ map <down> <nop>
 map <left> <nop>
 map <right> <nop>
 
+" General config
 syntax enable
 syntax on
 set background=dark
 let g:rehash256 = 1
-colorscheme OceanicNext
-
+colorscheme onedark
 set pastetoggle=<F6>
-if has("gui_running")
-  set guioptions=egmrt
-endif
 set encoding=utf-8
 set list listchars=tab:→\ ,trail:·
 let g:ctrlp_custom_ignore = {
@@ -30,7 +27,7 @@ let g:ctrlp_custom_ignore = {
 \ 'link': 'some_bad_symbolic_links',
 \ }
 if executable('ag')
-    let g:ackprg = 'ag'
+  let g:ackprg = 'ag'
 endif
 
 " Powerline configuration
@@ -51,7 +48,7 @@ let r_syntax_folding=1        " R
 let ruby_fold=1               " Ruby
 let sh_fold_enabled=1         " sh
 let vimsyn_folding='af'       " Vim script
-let xml_syntax_folding=1      " XML
+let xml_syntax_folding=0      " XML
 
 " Others
 let $GOPATH = '/Users/cristianv/go/'
@@ -68,6 +65,7 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
+" Ale configuration an fixes for Jsx and js.
 let g:ale_linters = {
 \ 'javascript': ['eslint'],
 \ 'javascript.jsx': ['eslint'],
