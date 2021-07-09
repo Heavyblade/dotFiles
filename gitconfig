@@ -1,0 +1,32 @@
+[user]
+	name = CristianV
+	email = cristianvg2003@gmail.com
+	username = Heavyblade
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[use]
+	email = cristianvg2003@gmail.com
+[alias]
+  ci = commit
+  po = pull origin master
+  pu = push origin master
+  ph = push heroku master
+  st = status
+  ga = add .
+  co = checkout
+  kommit = commit
+[core]
+	excludesfile = /home/cvasquez/.global_ignore
+	editor = vim
+[filter "lfs"]
+	smudge = git-lfs smudge %f
+	required = true
+	clean = git-lfs clean %f
+[credential]
+	helper = cache --timeout=2592000
+[push]
+	default = simple
+[web]
+	browser = google-chrome

@@ -22,20 +22,13 @@ set pastetoggle=<F6>
 set encoding=utf-8
 set list listchars=tab:→\ ,trail:·
 let g:ctrlp_custom_ignore = {
-\ 'dir':  '\v[\/](Resources|tmp|node_modules)$',
+\ 'dir':  '\v[\/](Resources|tmp|node_modules|reports)$',
 \ 'file': '\v\.(exe|so|dll)$',
 \ 'link': 'some_bad_symbolic_links',
 \ }
 if executable('ag')
   let g:ackprg = 'ag'
 endif
-
-" Powerline configuration
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '>'
-let g:airline_theme = 'codedark'
-set t_Co=256
 
 " Folding configuration
 set foldmethod=syntax
@@ -51,7 +44,7 @@ let vimsyn_folding='af'       " Vim script
 let xml_syntax_folding=0      " XML
 
 " Others
-let $GOPATH = '/Users/cristianv/go/'
+let $GOPATH = '/home/cristianvasquez/go'
 set suffixesadd+=.js
 let g:gist_post_private = 1
 set completefunc=syntaxcomplete#Complete
@@ -65,14 +58,5 @@ augroup numbertoggle
   autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
 augroup END
 
-" Ale configuration an fixes for Jsx and js.
-let g:ale_linters = {
-\ 'javascript': ['eslint'],
-\ 'javascript.jsx': ['eslint'],
-\ 'jsx': ['eslint']
-\ }
-
-let g:ale_fixers = {
-\ 'javascript': ['eslint'],
-\ 'javascript.jsx': ['eslint'],
-\}
+filetype plugin indent on
+augroup END
