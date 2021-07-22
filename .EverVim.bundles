@@ -1,0 +1,4 @@
+Plug 'mileszs/ack.vim'
+Plug 'vim-scripts/ZoomWin'
+Plug 'tpope/vim-rails'
+Plug 'joshdick/onedark.vim'
