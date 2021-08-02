@@ -15,7 +15,7 @@
     " EverVim Bundle Groups
     " Bundle Group name is just folders under ~/.EverVim/plugins
     " Below is the default config, uncomment and make your own
-    let g:evervim_bundle_groups=['general', 'appearance', 'writing', 'youcompleteme', 'programming', 'python', 'javascript', 'typescript', 'html', 'css', 'misc', 'go', 'rust', 'cpp', 'lua', 'ruby']
+    let g:evervim_bundle_groups=['general', 'appearance', 'writing', 'youcompleteme', 'programming', 'python', 'javascript', 'html', 'css', 'misc', 'go', 'ruby']
 
     " Color Theme
     " Use :Colors for a list of available colorschemes
@@ -171,19 +171,21 @@
     map <F5> :WinResizerStartResize<cr>
     nnoremap <c-p> :GFiles<cr>
     map <F6> :ALEToggle<cr>
+    map <F7> :set pastetogglset<cr>
+    map <C-w> :bd<cr>
 
     " Allow vim to share the sistem clipboard
     set clipboard=unnamedplus
 
-    set number relativenumber
+    "set number relativenumber
     let g:ctrlp_working_path_mode = 0
 
     " show relative numbers
-    augroup numbertoggle
-      autocmd!
-      autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-      autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-    augroup END
+    "augroup numbertoggle
+      "autocmd!
+      "autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+      "autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+    "augroup END
 
 
     " default values for synta
@@ -196,5 +198,5 @@
 
     " Disable ALE by default
     let g:ale_enabled = 0
-" }
+" 
 
