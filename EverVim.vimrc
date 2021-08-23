@@ -170,9 +170,8 @@
     map <F4> :tabnew<cr>
     map <F5> :WinResizerStartResize<cr>
     map <F6> :ALEToggle<cr>
-    map <F7> :set pastetogglset<cr>
+    map <F2> :Telescope find_files<cr>
     map <C-w> :bd<cr>
-    nnoremap <c-p> :GFiles<cr>
 
     " Allow vim to share the sistem clipboard
     set clipboard=unnamedplus
@@ -188,7 +187,9 @@
     augroup END
 
     " default values for synta
-    let g:indentLine_color_term = 8
+    let g:indentLine_setColors = 0
+    let g:indentLine_char = get(g:, 'indentLine_char', '⎸')
+
     syntax on
     let g:rehash256 = 1
     let g:evervim_color_theme="onedark"
@@ -196,11 +197,7 @@
 
     " Disable ALE by default
     let g:ale_enabled = 0
-    "let g:ycm_key_list_select_completion = ['<Down>']
-    "let g:UltiSnipsExpandTrigger = "<Leader><Tab>"
-    let g:UltiSnipsExpandTrigger = "<Leader><Tab>"
-    "let g:UltiSnipsJumpForwardTrigger = "<Tab>"
-    "let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
+    let g:UltiSnipsExpandTrigger = "<C-Tab>"
 
     " Set tabs to two spaces every where
     setlocal expandtab shiftwidth=2 softtabstop=2
@@ -210,4 +207,30 @@
 
     "Remove bell on vim
     set noeb vb t_vb=
+
+    " ack.vim --- {{{
+
+        " Use ripgrep for searching ⚡️
+        " Options include:
+        " --vimgrep -> Needed to parse the rg response properly for ack.vim
+        " --type-not sql -> Avoid huge sql file dumps as it slows down the search
+        " --smart-case -> Search case insensitive if all lowercase pattern, Search case sensitively otherwise
+        let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
+
+        " Auto close the Quickfix list after pressing '<enter>' on a list item
+        let g:ack_autoclose = 1
+
+        " Any empty ack search will search for the work the cursor is on
+        let g:ack_use_cword_for_empty_search = 1
+
+        " Don't jump to first match
+        cnoreabbrev Ack Ack!
+
+        " Maps <leader>/ so we're ready to type the search keyword
+        nnoremap <Leader>/ :Ack!<Space>
+
+        " Navigate quickfix list with ease
+        nnoremap <silent> [q :cprevious<CR>
+        nnoremap <silent> ]q :cnext<CR>
+    " }}}
 "}
