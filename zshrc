@@ -1,20 +1,27 @@
-# export TERM="xterm-256color"
-# Path to your oh-my-zsh installation.
-export ZSH=/home/cvasquez/.oh-my-zsh
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-# ZSH_THEME="robbyrussell"
-# ZSH_THEME="powerlevel9k/powerlevel9k"
-ZSH_THEME="refined"
-source ~/tmuxinator.zsh
+# Path to your oh-my-zsh installation.
+  export ZSH="/home/cristianvasquez/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="gallois"
+#ZSH_THEME="agnoster"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
@@ -42,25 +49,33 @@ source ~/tmuxinator.zsh
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+  bundler
+  rbenv
+  ruby
+)
+
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
-source $ZSH/oh-my-zsh.sh
-export EDITOR=vim
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -75,7 +90,7 @@ export EDITOR=vim
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -85,12 +100,36 @@ export EDITOR=vim
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+export PATH=$PATH:/home/cristianvasquez/.rbenv/bin
+eval "$(rbenv init -)"
+export SSL_CERT_FILE=/home/cristianvasquez/cacert.pem
 export PATH=$PATH:/usr/local/go/bin
-export GOPATH=/home/cvasquez/go
-export PATH=~/.local/bin:$PATH
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:/home/cristianvasquez/.local/bin
+export BUNDLE_PACKAGECLOUD__IO=e396a56757463a0e80f462722ccb5d17239b2d9d6b56ada3
+export EDITOR=code
+export GOPATH=/home/cristianvasquez/go
+export OAUTH_CLIENT_ID=a5d54633-f8d6-4d64-b5f3-3750a65fc245
+export OAUTH_CLIENT_SECRET=NX]ks0]eK@k8EWzP.V3oEo1M.kYBA:h7
+export OAUTH_REDIRECT_URI=http://localhost:8080/login
+export OAUTH_TENANT_ID=0b3fc178-b730-4e8b-9843-e81259237b77
+export SKIP_RSS=true
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-export NODE_ENV=development && export NODE_CONFIG_DIR='../CalendarProxyConfig/config'
-export SSL_CERT_FILE=/usr/local/etc/openssl/cacert.pem
-prompt_context() {}
+alias minikube="sudo minikube"
+alias kctl="sudo kubectl" [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/cristianvasquez/Downloads/google-cloud-sdk-290.0.0-linux-x86_64/google-cloud-sdk/path.zsh.inc' ]; then . '/home/cristianvasquez/Downloads/google-cloud-sdk-290.0.0-linux-x86_64/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/cristianvasquez/Downloads/google-cloud-sdk-290.0.0-linux-x86_64/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/cristianvasquez/Downloads/google-cloud-sdk-290.0.0-linux-x86_64/google-cloud-sdk/completion.zsh.inc'; fi
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export Stage=Local
+export EC4U_DB=postgres
+export EC4U_USERNAME=postgres
+export EC4U_PASSWORD=postgres
+
+export PGPASSWORD=postgres
+export PGUSER=postgres
+alias vim="nvim"
