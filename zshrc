@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/cristianvasquez/.oh-my-zsh"
+  export ZSH="/Users/cvazquez/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -37,7 +37,7 @@ ZSH_THEME="gallois"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -63,12 +63,7 @@ ZSH_THEME="gallois"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  git
-  bundler
-  rbenv
-  ruby
-)
+plugins=(git sudo zsh-syntax-highlighting zsh-autosuggestions rbenv bundler ruby)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -100,36 +95,38 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH=$PATH:/home/cristianvasquez/.rbenv/bin
 eval "$(rbenv init -)"
-export SSL_CERT_FILE=/home/cristianvasquez/cacert.pem
+export SSL_CERT_FILE=/Users/cvazquez/cacert.pem
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:/home/cristianvasquez/.local/bin
-export BUNDLE_PACKAGECLOUD__IO=e396a56757463a0e80f462722ccb5d17239b2d9d6b56ada3
-export EDITOR=code
-export GOPATH=/home/cristianvasquez/go
-export OAUTH_CLIENT_ID=a5d54633-f8d6-4d64-b5f3-3750a65fc245
-export OAUTH_CLIENT_SECRET=NX]ks0]eK@k8EWzP.V3oEo1M.kYBA:h7
-export OAUTH_REDIRECT_URI=http://localhost:8080/login
-export OAUTH_TENANT_ID=0b3fc178-b730-4e8b-9843-e81259237b77
-export SKIP_RSS=true
-
-alias minikube="sudo minikube"
-alias kctl="sudo kubectl" [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/cristianvasquez/Downloads/google-cloud-sdk-290.0.0-linux-x86_64/google-cloud-sdk/path.zsh.inc' ]; then . '/home/cristianvasquez/Downloads/google-cloud-sdk-290.0.0-linux-x86_64/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/cristianvasquez/Downloads/google-cloud-sdk-290.0.0-linux-x86_64/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/cristianvasquez/Downloads/google-cloud-sdk-290.0.0-linux-x86_64/google-cloud-sdk/completion.zsh.inc'; fi
-
+export PATH=$PATH:/Users/cvazquez/.local/bin
+export EDITOR=vim
+export GOPATH=/Users/cvazquez/go
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export Stage=Local
-export EC4U_DB=postgres
-export EC4U_USERNAME=postgres
-export EC4U_PASSWORD=postgres
-
 export PGPASSWORD=postgres
 export PGUSER=postgres
+export PATH="/usr/local/opt/node@14/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/node@14/lib"
+export CPPFLAGS="-I/usr/local/opt/node@14/include"
+
 alias vim="nvim"
+export ANDROID_NDK_HOME="/usr/local/share/android-ndk"
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    tmux attach -t default || tmux new -s default
+fi
+
+# PCI-DDS [Secure Communication](https://github.com/spreedly/pci-dss/blob/master/records/secure-communication.md#gpg-installation--setup)
+GPG1_DIR=/usr/local/opt/gnupg@1.4/libexec/gpgbin
+#GPG1_DIR=$(brew --prefix gpg1)/libexec/gpgbin
+
+if [ -d "${GPG1_DIR}" ]; then
+    export PATH="${GPG1_DIR}:${PATH}"
+fi
+# End PCI-DDS required
+
+if type brew &>/dev/null; then
+  FPATH=/usr/local/share/zsh/site-functions:$FPATH
+fi
+
+autoload -Uz compinit
+compinit
