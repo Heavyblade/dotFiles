@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -8,7 +15,7 @@
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="gallois"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 #ZSH_THEME="agnoster"
 
 # Set list of themes to pick from when loading at random
@@ -100,7 +107,7 @@ export SSL_CERT_FILE=/Users/cvazquez/cacert.pem
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:/Users/cvazquez/.local/bin
-export EDITOR=vim
+export EDITOR=nvim
 export GOPATH=/Users/cvazquez/go
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PGPASSWORD=postgres
@@ -109,11 +116,10 @@ export PATH="/usr/local/opt/node@14/bin:$PATH"
 export LDFLAGS="-L/usr/local/opt/node@14/lib"
 export CPPFLAGS="-I/usr/local/opt/node@14/include"
 
-alias vim="nvim"
 export ANDROID_NDK_HOME="/usr/local/share/android-ndk"
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    tmux attach -t default || tmux new -s default
-fi
+#if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    #tmux attach -t default || tmux new -s default
+#fi
 
 # PCI-DDS [Secure Communication](https://github.com/spreedly/pci-dss/blob/master/records/secure-communication.md#gpg-installation--setup)
 GPG1_DIR=/usr/local/opt/gnupg@1.4/libexec/gpgbin
@@ -130,3 +136,31 @@ fi
 
 autoload -Uz compinit
 compinit
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
+export CPPFLAGS="-I/usr/local/opt/openjdk@11/include"
+export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
+#export GITHUB_TOKEN=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
+export GITHUB_TOKEN=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
+
+alias vim="nvim -c \"Telescope find_files\""
+alias core="cd ~/rails/spreedly/core && vim ."
+alias am="cd ~/rails/spreedly/active_merchant && vim ."
+alias work="cd ~/Dropbox/obsidian/ && nvim ."
+alias team="cd \"/Users/cvazquez/Google Drive/My Drive/knowledge_vault\" && nvim"
+alias gcc='gcc-12'
+alias cat='bat'
+alias ls='exa --icons --color=always'
+alias ts='task list project:Today'
+alias ta='task add project:Today'
+alias fv='nvim $(fzf)'
+export CC=gcc-12
+export OPENAI_API_KEY="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"
+
+. /usr/local/opt/asdf/libexec/asdf.sh
+
+source ~/.zoxide.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
